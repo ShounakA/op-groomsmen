@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
-import { ashen, gihan, joel, mrunal, rajat, shounak } from './components/AsssetsLoader';
+import { ashen, gihan, joel, mrunal, rajat, shounak, yash } from './components/AsssetsLoader';
 
 // Import Swiper styles
 // @ts-ignore
@@ -74,8 +74,8 @@ const HOSTS_DATA = [
     name: 'Yash', 
     role: 'Host', 
     desc: 'The Hype Man. Every party needs a Yash to keep the vibe right.', 
-    funFact: 'Has an encyclopedic knowledge of early 2000s rap lyrics.',
-    img: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&q=80&w=800' 
+    funFact: 'Has self-diagnosed himself with IBS (Irritable Bowel Syndrome) just to get out of a work meetings.',
+    img: yash
   },
   { 
     name: 'Mustafa', 
