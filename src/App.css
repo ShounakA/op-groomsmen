@@ -440,6 +440,39 @@ button.secondary {
   border: 1px solid #444;
 }
 
+.event-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 60px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.detail-card {
+  background: #222;
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid #333;
+  transition: border-color 0.3s;
+  text-align: left;
+}
+
+.detail-card:hover {
+  border-color: #d4af37;
+}
+
+.detail-card h3 {
+  color: #d4af37;
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+.detail-card p {
+  color: #ccc;
+  line-height: 1.6;
+}
+
 /* Global Button Updates */
 button.primary {
   background-color: #d4af37;

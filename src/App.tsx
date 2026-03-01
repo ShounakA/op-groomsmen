@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
+import { ashen, gihan, joel, mrunal, rajat, shounak } from './components/AsssetsLoader';
 
 // Import Swiper styles
 // @ts-ignore
@@ -22,7 +23,7 @@ const GROOM = {
   role: 'The Groom', 
   desc: 'The man of the hour. Taking his final lap as a free man.', 
   funFact: 'Legend has it he can navigate Rainbow Road blindfolded.',
-  img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=800' 
+  img:  ashen
 };
 
 const HOSTS_DATA = [
@@ -31,35 +32,35 @@ const HOSTS_DATA = [
     role: 'Host', 
     desc: 'Tournament Director and master of chaos. If there is a beer, he is near.', 
     funFact: 'Has never lost a Beerio Kart match on a Tuesday.',
-    img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=800' 
+    img: shounak
   },
   { 
     name: 'Rajat', 
     role: 'Host', 
     desc: 'Casino Night visionary. Will likely take all your buy-in money.', 
     funFact: 'Banned from 3 major casinos for "knowing too much."',
-    img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800' 
+    img: rajat
   },
   { 
     name: 'Joel', 
     role: 'Host', 
     desc: 'Logistics and "Special Entertainment" specialist. Knows all the best spots.', 
     funFact: 'Once convinced a stranger he was an Olympic Ping Pong champion.',
-    img: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=800' 
+    img: joel 
   },
   { 
     name: 'Mrunal', 
     role: 'Host', 
     desc: 'The Tech Wizard. Managing VR, Escape Rooms, and the Hot Ones gauntlet.', 
     funFact: 'Can solve a Rubik\'s cube in under 30 seconds while eating a Ghost Pepper.',
-    img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=800' 
+    img: mrunal
   },
   { 
     name: 'Gihan', 
     role: 'Host', 
     desc: 'The Game Master. Handling the high-stakes Drinking Jenga challenges.', 
     funFact: 'His Jenga towers have stood through actual earthquakes.',
-    img: 'https://images.unsplash.com/photo-1513956589380-bad6acb9b9d4?auto=format&fit=crop&q=80&w=800' 
+    img: gihan
   },
   { 
     name: 'Gabriel', 
@@ -186,6 +187,16 @@ function Home() {
           <h3>The Tournament</h3>
           <p>High stakes, cold beers, and high-speed karts. May the best racer win.</p>
           <img src={beeriokertImage} alt="Beerio Kart Tournament" className="detail-image" />
+        </div>
+        <div className="detail-card">
+          <h3>The Stakes</h3>
+          <p>Casino night. Losers are punished, winners take all. Watch your buy-in closely.</p>
+          <img src="https://images.unsplash.com/photo-1596838132731-3301c3fd4317?auto=format&fit=crop&q=80&w=800" alt="Casino Night" className="detail-image" />
+        </div>
+        <div className="detail-card">
+          <h3>The Gauntlet</h3>
+          <p>Hot wings, cold nerves. Survival is the only objective in the final showdown.</p>
+          <img src="https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&q=80&w=800" alt="Hot Ones Gauntlet" className="detail-image" />
         </div>
       </div>
     </div>
