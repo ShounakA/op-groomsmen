@@ -5,7 +5,7 @@ import '../App.css';
 const EVENTS = [
   { name: 'Casino Night', day: 'Friday', time: 'Night', host: 'Rajat', cost: 'Buy-in', icon: '🎲' },
   { name: 'Roast and Toast', day: 'Friday', time: 'Night', host: 'Shounak', cost: 'Free', icon: '🔥' },
-  { name: 'Gai Stripper', day: 'Friday', time: 'Night', host: 'Joel', cost: 'Dignity', icon: '❓', scrambled: true },
+  { name: 'Gai Stripper', day: 'Friday', time: 'Night', host: 'Joel', cost: 'Dignity', icon: '❓' },
   { name: 'Scavenger Hunt', day: 'Fri/Sat', time: 'Day', host: 'Mrunal/Shounak', cost: 'Free', icon: '🔍' },
   { name: 'Nerf Gun BR / Laser Tag', day: 'Saturday', time: 'Day', host: 'Rajat/Shounak', cost: '$200', icon: '🔫', link: '/snd' },
   { name: 'VR Games', day: 'Saturday', time: 'Day', host: 'Mrunal', cost: '$700 Total', icon: '🥽' },
@@ -16,12 +16,43 @@ const EVENTS = [
   { name: 'Drinking Jenga', day: 'Saturday', time: 'Night', host: 'Gihan', cost: 'Free', icon: '🧱' },
 ];
 
+export const isScrambled = (event: { name: string; day: string }, today = new Date()) => {
+  const exclusions = [
+    'Roast and Toast',
+    'Drinking Games',
+    'Beerio Kart'
+  ];
+  
+  if (exclusions.some(exc => event.name.toLowerCase().includes(exc.toLowerCase()))) return false;
+  
+  const currentDay = today.getDate();
+  const currentMonth = today.getMonth(); // 2 is March
+  const currentYear = today.getFullYear();
+  
+  // Only apply scrambling logic for 2026
+  if (currentYear > 2026) return false;
+  if (currentYear === 2026 && currentMonth > 2) return false;
+  if (currentYear === 2026 && currentMonth < 2) return true;
+  
+  const eventDayMap: Record<string, number> = {
+    'Friday': 6,
+    'Fri/Sat': 6,
+    'Saturday': 7,
+    'Sunday': 8
+  };
+  
+  const targetDay = eventDayMap[event.day];
+  if (!targetDay) return false;
+  
+  return currentDay < targetDay;
+}
+
 export default function Itinerary() {
   const groupedEvents = EVENTS.reduce((acc, event) => {
     if (!acc[event.day]) acc[event.day] = [];
     acc[event.day].push(event);
     return acc;
-  }, {} as Record<string, typeof EVENTS>);
+  }, {} as Record<string, (typeof EVENTS)[0][]>);
 
   return (
     <div className="app itinerary-page">
@@ -38,24 +69,35 @@ export default function Itinerary() {
             <div key={day} className="day-group">
               <h3 className="day-title">{day}</h3>
               <div className="events-flex">
-                {events.map((event, i) => (
-                  <div key={i} className="event-card-compact">
-                    <div className="event-header">
-                      <span className="event-icon">{event.icon}</span>
-                      <span className="event-time">{event.time}</span>
+                {events.map((event, i) => {
+                  const shouldScramble = isScrambled(event);
+                  return (
+                    <div key={i} className="event-card-compact">
+                      <div className="event-header">
+                        <span className="event-icon">{event.icon}</span>
+                        <span className="event-time">
+                          {shouldScramble ? <ScrambledText text={event.time} /> : event.time}
+                        </span>
+                      </div>
+                      <h4 className="event-name">
+                        {shouldScramble ? <ScrambledText text={event.name} /> : event.name}
+                      </h4>
+                      <div className="event-footer">
+                        <span className="event-host">
+                          {shouldScramble ? <ScrambledText text={event.host} /> : event.host}
+                        </span>
+                        <span className="event-cost">
+                          {shouldScramble ? <ScrambledText text={event.cost} /> : event.cost}
+                        </span>
+                      </div>
+                      {event.link && (
+                        <Link to={event.link} className="event-link">
+                          {shouldScramble ? <ScrambledText text={event.linkText || 'Go to Mission →'} /> : (event.linkText || 'Go to Mission →')}
+                        </Link>
+                      )}
                     </div>
-                    <h4 className="event-name">
-                      {event.scrambled ? <ScrambledText text={event.name} /> : event.name}
-                    </h4>
-                    <div className="event-footer">
-                      <span className="event-host">{event.host}</span>
-                      <span className="event-cost">{event.cost}</span>
-                    </div>
-                    {event.link && (
-                      <Link to={event.link} className="event-link">{event.linkText || 'Go to Mission →'}</Link>
-                    )}
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           ))}

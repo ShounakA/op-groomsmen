@@ -191,7 +191,7 @@ function Home() {
         </div>
         <div className="detail-card">
           <h3>The Stakes</h3>
-          <p>Casino night. Losers are punished, winners take all. Watch your buy-in closely.</p>
+          <p>GAMBA. Losers are punished, winners take all. Watch your buy-in closely.</p>
           <img src="https://images.unsplash.com/photo-1596838132731-3301c3fd4317?auto=format&fit=crop&q=80&w=800" alt="Casino Night" className="detail-image" />
         </div>
         <div className="detail-card">
