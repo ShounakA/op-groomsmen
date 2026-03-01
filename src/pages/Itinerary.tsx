@@ -7,11 +7,11 @@ const EVENTS = [
   { name: 'Roast and Toast', day: 'Friday', time: 'Night', host: 'Shounak', cost: 'Free', icon: '🔥' },
   { name: 'Gai Stripper', day: 'Friday', time: 'Night', host: 'Joel', cost: 'Dignity', icon: '❓', scrambled: true },
   { name: 'Scavenger Hunt', day: 'Fri/Sat', time: 'Day', host: 'Mrunal/Shounak', cost: 'Free', icon: '🔍' },
-  { name: 'Nerf Gun BR / Laser Tag', day: 'Saturday', time: 'Day', host: 'Rajat/Shounak', cost: '$200', icon: '🔫' },
+  { name: 'Nerf Gun BR / Laser Tag', day: 'Saturday', time: 'Day', host: 'Rajat/Shounak', cost: '$200', icon: '🔫', link: '/snd' },
   { name: 'VR Games', day: 'Saturday', time: 'Day', host: 'Mrunal', cost: '$700 Total', icon: '🥽' },
   { name: 'Escape Room', day: 'Saturday', time: 'Day', host: 'Mrunal', cost: '$31+', icon: '🧩' },
   { name: 'Hot Ones Gauntlet', day: 'Saturday', time: 'Day', host: 'Mrunal', cost: '???', icon: '🌶️' },
-  { name: 'Beerio Kart (Tournament)', day: 'Saturday', time: 'Night', host: 'Shounak', cost: 'Free', icon: '🏎️', link: '/beeriokart' },
+  { name: 'Beerio Kart (Tournament)', day: 'Saturday', time: 'Night', host: 'Shounak', cost: 'Free', icon: '🏎️', link: '/beeriokart', linkText: 'Go to Bracket →' },
   { name: 'Drinking Games (Pong, Flip Cup, Kings)', day: 'Saturday', time: 'Night', host: 'Joel/Gihan', cost: 'Free', icon: '🍺' },
   { name: 'Drinking Jenga', day: 'Saturday', time: 'Night', host: 'Gihan', cost: 'Free', icon: '🧱' },
 ];
@@ -52,7 +52,7 @@ export default function Itinerary() {
                       <span className="event-cost">{event.cost}</span>
                     </div>
                     {event.link && (
-                      <Link to={event.link} className="event-link">Go to Bracket →</Link>
+                      <Link to={event.link} className="event-link">{event.linkText || 'Go to Mission →'}</Link>
                     )}
                   </div>
                 ))}

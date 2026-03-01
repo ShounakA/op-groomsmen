@@ -12,6 +12,7 @@ import 'swiper/css/pagination';
 
 import BeerioKart from './pages/BeerioKart';
 import Itinerary from './pages/Itinerary';
+import Bomb from './pages/Bomb';
 import Fireworks from './components/Fireworks';
 import beersImg from './assets/beers.jpg';
 import seltzerImg from './assets/seltzers.jpg';
@@ -210,6 +211,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/itinerary" element={<Itinerary />} />
         <Route path="/beeriokart" element={<BeerioKart />} />
+        <Route path="/snd" element={<Bomb />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
