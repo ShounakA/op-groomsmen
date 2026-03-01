@@ -78,9 +78,9 @@ const HOSTS_DATA = [
     img: yash
   },
   { 
-    name: 'Mustafa', 
+    name: 'Brian', 
     role: 'Host', 
-    desc: 'The Wildcard. You never know what Mustafa is bringing to the table.', 
+    desc: 'The Wildcard. You never know what Brian is bringing to the table.', 
     funFact: 'Once won a staring contest with a literal mountain goat.',
     img: 'https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&q=80&w=800' 
   },
