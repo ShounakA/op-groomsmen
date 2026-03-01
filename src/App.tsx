@@ -32,7 +32,7 @@ const HOSTS_DATA = [
     name: 'Shounak', 
     role: 'Host', 
     desc: 'Tournament Director and master of chaos. If there is a beer, he is near.', 
-    funFact: 'Has never lost a Beerio Kart match on a Tuesday.',
+    funFact: 'Has been walked in on and was interrogated while naked. True story.',
     img: shounak
   },
   { 
