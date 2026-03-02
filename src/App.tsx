@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
-import { ashen, gihan, joel, mrunal, rajat, shounak, yash } from './components/AsssetsLoader';
+import { ashen, brian, gihan, joel, mrunal, rajat, shounak, yash } from './components/AsssetsLoader';
 
 // Import Swiper styles
 // @ts-ignore
@@ -80,10 +80,17 @@ const HOSTS_DATA = [
   { 
     name: 'Brian', 
     role: 'Host', 
-    desc: 'The Wildcard. You never know what Brian is bringing to the table.', 
+    desc: 'The Chef. Curating the menu and ensuring we have the best snacks to fuel our shenanigans.', 
+    funFact: 'Can solo a bottle of soju faster than anyone else in the pack and drive a civic like it\'s a Formula 1 car. Not at the sime time though.',
+    img: brian 
+  },
+  { 
+    name: 'Mustafa', 
+    role: 'Host', 
+    desc: 'The Wildcard. You never know what Mustafa is bringing to the table.', 
     funFact: 'Once won a staring contest with a literal mountain goat.',
     img: 'https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&q=80&w=800' 
-  },
+  }
 ];
 
 function Home() {
