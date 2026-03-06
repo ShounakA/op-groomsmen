@@ -13,11 +13,15 @@ import 'swiper/css/pagination';
 import BeerioKart from './pages/BeerioKart';
 import Itinerary from './pages/Itinerary';
 import Bomb from './pages/Bomb';
+import Countdown from './pages/Countdown';
 import Fireworks from './components/Fireworks';
 import beersImg from './assets/beers.jpg';
 import seltzerImg from './assets/seltzers.jpg';
 import beeriokertImage from './assets/beeriokart.jpg';
 import './App.css';
+
+// Target Date: March 6, 2026 5:00 PM
+export const TARGET_DATE = new Date(2026, 2, 6, 17, 0, 0).getTime();
 
 const GROOM = { 
   name: 'Ashen', 
@@ -212,6 +216,25 @@ function Home() {
 }
 
 function App() {
+  const [isCountdownOver, setIsCountdownOver] = useState(new Date().getTime() >= TARGET_DATE);
+
+  useEffect(() => {
+    if (isCountdownOver) return;
+
+    const timer = setInterval(() => {
+      if (new Date().getTime() >= TARGET_DATE) {
+        setIsCountdownOver(true);
+        clearInterval(timer);
+      }
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [isCountdownOver]);
+
+  if (!isCountdownOver) {
+    return <Countdown />;
+  }
+
   return (
     <BrowserRouter>
       <Routes>
