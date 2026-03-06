@@ -6,7 +6,6 @@ const EVENTS = [
   { name: 'Casino Night', day: 'Friday', time: 'Night', host: 'Rajat', cost: 'Buy-in', icon: '🎲' },
   { name: 'Roast and Toast', day: 'Friday', time: 'Night', host: 'Shounak', cost: 'Free', icon: '🔥' },
   { name: 'Gai Stripper', day: 'Friday', time: 'Night', host: 'Joel', cost: 'Dignity', icon: '❓' },
-  { name: 'Scavenger Hunt', day: 'Fri/Sat', time: 'Day', host: 'Mrunal/Shounak', cost: 'Free', icon: '🔍' },
   { name: 'Nerf Gun BR / Laser Tag', day: 'Saturday', time: 'Day', host: 'Rajat/Shounak', cost: '$200', icon: '🔫', link: '/snd' },
   { name: 'VR Games', day: 'Saturday', time: 'Day', host: 'Mrunal', cost: '$700 Total', icon: '🥽' },
   { name: 'Escape Room', day: 'Saturday', time: 'Day', host: 'Mrunal', cost: '$31+', icon: '🧩' },
@@ -28,6 +27,7 @@ export const isScrambled = (event: { name: string; day: string }, today = new Da
   const currentDay = today.getDate();
   const currentMonth = today.getMonth(); // 2 is March
   const currentYear = today.getFullYear();
+  const currentHour = today.getHours();
   
   // Only apply scrambling logic for 2026
   if (currentYear > 2026) return false;
@@ -43,6 +43,11 @@ export const isScrambled = (event: { name: string; day: string }, today = new Da
   
   const targetDay = eventDayMap[event.day];
   if (!targetDay) return false;
+  
+  // If it's the target day (March 6th, 2026 is Friday), unscramble after 5 PM
+  if (currentDay === targetDay && currentDay === 6 && currentMonth === 2 && currentYear === 2026) {
+    return currentHour < 17;
+  }
   
   return currentDay < targetDay;
 }
